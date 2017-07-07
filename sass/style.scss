@@ -76,6 +76,14 @@ $bigger-width: 1200px;
 	}
 }
 
+@mixin transition($elemento, $tempo, $modo){
+	-webkit-transition: $elemento $tempo $modo;
+        -moz-transition: $elemento $tempo $modo;
+         -ms-transition: $elemento $tempo $modo;
+          -o-transition: $elemento $tempo $modo;
+             transition: $elemento $tempo $modo;
+}
+
 
 // Estrutura padrão
 *{
@@ -343,17 +351,24 @@ ul{
 		border: 1px solid transparent;
 		border-radius: 0.25rem;
 		position: absolute;
-right: 1rem;
-
+		right: 1rem;
+		cursor: pointer;
+		z-index: 999;
 	}
 
 	@include smaller {
-		.toggleButton{
+		#toggleButton{
 			display: block;
+		}
+		.collapse{
+			display: none;
+			&.active{
+				display: block;
+			}
 		}
 	}
 	@include tiny {
-		.toggleButton{
+		#toggleButton{
 			display: none;
 		}
 
@@ -363,6 +378,7 @@ right: 1rem;
 
 		.collapse {
 			@include flex;
+			display: block;
 			width: $w-100;
 			&>ul{
 				@include flexDirection(row,horizontal);
@@ -376,7 +392,7 @@ right: 1rem;
 		}
 	}
 	@include medium {
-		.toggleButton{
+		#toggleButton{
 			display: none;
 		}
 		@include flexDirection(row,horizontal);
@@ -385,6 +401,7 @@ right: 1rem;
 
 		.collapse {
 			@include flex;
+			display: block;
 			width: $w-100;
 			&>ul{
 				@include flexDirection(row,horizontal);
@@ -398,7 +415,7 @@ right: 1rem;
 		}
 	}
 	@include bigger {
-		.toggleButton{
+		#toggleButton{
 			display: none;
 		}
 		@include flexDirection(row,horizontal);
@@ -407,6 +424,7 @@ right: 1rem;
 
 		.collapse {
 			@include flex;
+			display: block;
 			width: $w-100;
 			&>ul{
 				@include flexDirection(row,horizontal);
@@ -440,4 +458,3 @@ right: 1rem;
 	
 
 }
-

@@ -273,10 +273,16 @@ ul {
     border: 1px solid transparent;
     border-radius: 0.25rem;
     position: absolute;
-    right: 1rem; }
+    right: 1rem;
+    cursor: pointer;
+    z-index: 999; }
   @media (min-width: 576px) and (max-width: 767px) {
-    #navbar .toggleButton {
-      display: block; } }
+    #navbar #toggleButton {
+      display: block; }
+    #navbar .collapse {
+      display: none; }
+      #navbar .collapse.active {
+        display: block; } }
   @media (min-width: 768px) and (max-width: 991px) {
     #navbar {
       display: -webkit-box;
@@ -303,13 +309,14 @@ ul {
       -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center; }
-      #navbar .toggleButton {
+      #navbar #toggleButton {
         display: none; }
       #navbar .collapse {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
+        display: block;
         width: 100%; }
         #navbar .collapse > ul {
           display: -webkit-box;
@@ -364,13 +371,14 @@ ul {
       -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center; }
-      #navbar .toggleButton {
+      #navbar #toggleButton {
         display: none; }
       #navbar .collapse {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
+        display: block;
         width: 100%; }
         #navbar .collapse > ul {
           display: -webkit-box;
@@ -425,13 +433,14 @@ ul {
       -webkit-align-items: center;
       -ms-flex-align: center;
       align-items: center; }
-      #navbar .toggleButton {
+      #navbar #toggleButton {
         display: none; }
       #navbar .collapse {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
+        display: block;
         width: 100%; }
         #navbar .collapse > ul {
           display: -webkit-box;
