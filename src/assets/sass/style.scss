@@ -1,0 +1,235 @@
+// Variáveis
+@import url('https://fonts.googleapis.com/css?family=Patua+One');
+$fontFamily: 'Open Sans', sans-serif;
+$fontFamily2: 'Patua One', cursive;
+
+$corPrimaria: #d20500;
+$corSecundaria: #636c72;
+$corTerciaria: rgb(43,41,42);
+$bgColor: #fff;
+
+$w-100: 100%;
+$w-80: 80%;
+$w-50: 50%;
+$w-40: 40%;
+$w-20: 20%;
+$w-10: 10%;
+
+$smaller-width: 576px;
+$tiny-width: 768px;
+$medium-width: 992px;
+$bigger-width: 1200px;
+
+// Mixins
+@mixin flex{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+@mixin flexDirection($direction,$orientation){
+	@include flex;
+	-webkit-box-orient: $orientation;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: $direction;
+	-ms-flex-direction: $direction;
+	flex-direction: $direction;
+}
+
+@mixin flexWrap($wrap){
+	@include flex;
+	-webkit-flex-wrap: $wrap;
+	-ms-flex-wrap: $wrap;
+	flex-wrap: $wrap;
+}
+
+@mixin flexAlign($align){
+	@include flex;
+	-webkit-box-align: $align;
+	-webkit-align-items: $align;
+	-ms-flex-align: $align;
+	align-items: $align;
+}
+
+@mixin flexJustify($align){
+	@include flex;
+	-webkit-box-pack: justify;
+    -webkit-justify-content: $align;
+    -ms-flex-pack: justify;
+    justify-content: $align;
+}
+
+@mixin smaller {
+	@media (min-width: #{$smaller-width}) and (max-width: #{$tiny-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin tiny {
+	@media (min-width: #{$tiny-width}) and (max-width: #{$medium-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin medium {
+	@media (min-width: #{$medium-width}) and (max-width: #{$bigger-width - 1px}) {
+		@content;
+	}
+}
+
+@mixin bigger {
+	@media (min-width: #{$bigger-width}) {
+		@content;
+	}
+}
+
+@mixin transition($elemento, $tempo, $modo){
+	-webkit-transition: $elemento $tempo $modo;
+        -moz-transition: $elemento $tempo $modo;
+         -ms-transition: $elemento $tempo $modo;
+          -o-transition: $elemento $tempo $modo;
+             transition: $elemento $tempo $modo;
+}
+
+
+// Estrutura padrão
+*{
+	box-sizing: border-box;
+}
+html {
+	font-family: $fontFamily;
+	line-height: 1.15;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	padding-top: 100px;
+	font-family: $fontFamily;
+	font-size: 1rem;
+	font-weight: normal;
+	line-height: 1.5;
+	color: $corSecundaria;
+	background-color: $bgColor;
+	margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-weight: 500;
+	color: $corTerciaria;
+	line-height: 1.1;
+	margin-top: 0;
+}
+
+h1 {
+	margin-bottom: 1.5rem !important;
+	font-family: $fontFamily2;
+	font-size: 2.5rem;
+}
+
+h2{
+	font-size: 2rem;
+}
+
+h5{
+	font-size: 1.25rem;
+}
+
+small{
+	font-size: 70%;
+	font-weight: normal;
+	color: $corSecundaria;
+	font-family: $fontFamily;
+
+}
+a{
+	text-decoration: none;
+	color: $corPrimaria;
+	font-weight: bolder;
+}
+p{
+	color: $corTerciaria;
+	text-align: justify;
+}
+
+ul{
+	list-style: none;
+}
+
+.pagination{
+	@include flex;
+	padding-left: 0;
+	list-style: none;
+	border-radius: 0.25rem;
+	.link{
+		position: relative;
+		display: block;
+		padding: 0.5rem 0.75rem;
+		margin-left: -1px;
+		line-height: 1.25;
+		background-color: white;
+		border: 1px solid lighten($corSecundaria, 50%);
+		border-radius: 0.25rem;
+	}
+}
+
+.btn{
+	color: white;
+	background-color: $corPrimaria;
+	border-color: $corPrimaria;
+	display: inline-block;
+	font-weight: normal;
+	line-height: 1.25;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+}
+
+.fixed {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+}
+
+.boxContainer {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+
+	@include smaller {
+		width: 100%;
+	}
+	@include tiny {
+		width: 100%;
+	}
+	@include medium {
+		width: 90%;
+	}
+	@include bigger {
+		width: 60%;
+	}	
+}
+
+
+.boxLine{
+	@include flexWrap(wrap);
+	margin-right: -15px;
+	margin-left: -15px;
+	&>*{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+.justify-content-center{
+	@include flex;
+	justify-content: center;
+}

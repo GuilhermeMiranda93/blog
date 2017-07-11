@@ -7,25 +7,25 @@ var jsMinify = require('gulp-minify');
 var browserSync = require('browser-sync').create();
 
 gulp.task('sass',function(){
-	return gulp.src('./sass/*.scss')
+	return gulp.src('./src/assets/sass/*.scss')
 	.pipe(sass().on('error',sass.logError))
-	.pipe(gulp.dest('./css'));
+	.pipe(gulp.dest('./src/assets/css'));
 });
 
 gulp.task('sass:watch',function(){
-	gulp.watch('./sass/*.scss',['sass']);
+	gulp.watch('./src/assets/sass/*.scss',['sass']);
 });
 
 gulp.task('minify-css',()=>{
-	return gulp.src('css/*.css')
+	return gulp.src('./src/assets/css/*.css')
 	.pipe(cleanCSS({compatibility: 'ie8'}))
-	.pipe(gulp.dest('production/css'));
+	.pipe(gulp.dest('./src/assets/production/css'));
 });
 
 gulp.task('minify-js',function(){
-	gulp.src('js/*.js')
+	gulp.src('./src/assets/*.js')
 	.pipe(jsMinify())
-	.pipe(gulp.dest('production/js'));
+	.pipe(gulp.dest('./src/assets/js'));
 });
 
 gulp.task('browser', ['sass'],function(){
@@ -33,6 +33,6 @@ gulp.task('browser', ['sass'],function(){
 		server:"./"
 	});
 
-	gulp.watch("sass/*.scss", ['sass']).on('change',browserSync.reload);
+	gulp.watch("./src/assets/sass/*.scss", ['sass']).on('change',browserSync.reload);
 	gulp.watch("*.html").on('change',browserSync.reload);
 });
